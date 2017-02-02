@@ -1,7 +1,7 @@
 import java.io.FileInputStream;
 import java.util.Scanner;
 
-public class QuickSelect {
+public class QuickSelectDemo {
 	static int N;
 	static int[] arr = new int[10000];
 	public static void main(String[] args)
@@ -34,14 +34,12 @@ public class QuickSelect {
 	}
 	public static void readInput(String file)
 	{
-		Scanner sc; FileInputStream fin;
+		Scanner sc;
 		
 		try{
 			if(file == null) sc = new Scanner(System.in);
-			else{
-				fin = new FileInputStream(file);
-				sc = new Scanner(fin);
-			}
+			else sc = new Scanner(new FileInputStream(file));
+			
 			N = sc.nextInt();
 	
 			for(int i = 0; i < N; i++)
