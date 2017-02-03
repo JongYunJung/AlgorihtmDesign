@@ -1,7 +1,7 @@
 
 public class SubsetDemo {
-	static char[] str;
-	static boolean[] bits;	
+	static char[] str = new char[]{'A', 'B', 'C', 'D'};
+	static boolean[] bits = new boolean[str.length];	
 	static int cnt = 0;
 	
 	public static void subset(int k, int n)
@@ -10,11 +10,11 @@ public class SubsetDemo {
 		{
 			System.out.printf("%3d> ", ++cnt);
 			
-			System.out.print(' ');
+			//System.out.print(' ');
 			for(int i = 0; i < k; i++)
 				if(bits[i]) 
 					System.out.printf("%c ", str[i]);
-			System.out.print('\n');
+			System.out.println();
 			return;
 		}
 		bits[k] = true; subset(k + 1, n);
@@ -58,10 +58,10 @@ public class SubsetDemo {
 		}
 	}
 	public static void main(String[] args) {
-		String tmp = new String("ABCDE");
-		str = tmp.toCharArray();
-		bits = new boolean[tmp.length()];
-		subset(0, tmp.length());
+		//String tmp = new String("ABCDE");
+		//str = tmp.toCharArray();
+		
+		subset(0, 4);
 		//subset_counting(tmp.length());
 		
 	}

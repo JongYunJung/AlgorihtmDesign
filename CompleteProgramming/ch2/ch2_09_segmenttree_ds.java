@@ -1,4 +1,4 @@
-import java.util.*;
+//import java.util.*;
 
 class SegmentTree {         // the segment tree is stored like a heap array
   private int[] st, A;

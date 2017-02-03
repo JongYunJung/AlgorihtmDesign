@@ -29,27 +29,31 @@ public class BFSDemo {
 	}
 	public static void readInput(String fileName) throws FileNotFoundException 
 	{
-			Scanner sc = new Scanner(new FileInputStream(fileName));
+		Scanner sc;
+		if(fileName != null)
+			sc = new Scanner(new FileInputStream(fileName));
+		else
+			sc = new Scanner(System.in);
 			
-			V = sc.nextInt();
-			E = sc.nextInt();
+		V = sc.nextInt();
+		E = sc.nextInt();
+		
+		int from, to;
+		for(int i = 0; i < E; i++)
+		{
+			from = sc.nextInt();
+			to = sc.nextInt();
 			
-			int from, to;
-			for(int i = 0; i < E; i++)
-			{
-				from = sc.nextInt();
-				to = sc.nextInt();
-				
-				G[from][to] = 1;
-				G[to][from] = 1;
-			}			
-			sc.close();
+			G[from][to] = 1;
+			G[to][from] = 1;
+		}			
+		sc.close();
 		
 	}
 	public static void main(String[] args) {
 		
 		try{
-			readInput("graph_input.txt");
+			readInput(null);
 			bfs(1);
 		}catch(Exception e)
 		{

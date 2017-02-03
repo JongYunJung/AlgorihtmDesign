@@ -1,9 +1,8 @@
-import java.io.FileInputStream;
 import java.util.*;
 
 public class MST_Kruskal {
-	static int[] p = null;
-	//static int[] r = null;
+	static int[] p = null;		// 부모 저장
+	
 	static int V, E;
 	public static class Edge implements Comparable<Edge>{
 		int u, v, w;
@@ -56,8 +55,8 @@ public class MST_Kruskal {
 	}
 	public static void main(String[] args) {
 		try{
-			Scanner sc = new Scanner(new FileInputStream("mst_input.txt"));	
-			
+			//Scanner sc = new Scanner(new FileInputStream("mst_input.txt"));	
+			Scanner sc = new Scanner(System.in);
 			V = sc.nextInt();
 			E = sc.nextInt();
 			

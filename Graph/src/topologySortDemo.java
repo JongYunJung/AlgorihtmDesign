@@ -60,7 +60,11 @@ public class topologySortDemo {
 	public static void readInput(String fileName)
 	{
 		try{
-			Scanner sc = new Scanner(new FileInputStream(fileName));
+			Scanner sc;
+			if(fileName != null)
+				sc = new Scanner(new FileInputStream(fileName));
+			else
+				sc = new Scanner(System.in);
 					
 			V = sc.nextInt();
 			E = sc.nextInt();
@@ -81,7 +85,7 @@ public class topologySortDemo {
 		}
 	}
 	public static void main(String[] args) {		
-		readInput("topo_input.txt");
+		readInput(null);
 		solve_degree();
 	}
 }

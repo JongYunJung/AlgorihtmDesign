@@ -1,41 +1,50 @@
-import java.util.Scanner;
+// https://www.acmicpc.net/problem/10090 or 1517
 
-public class Main {	
-	static int MAXN = 100000;
-	static int[] T = new int[MAXN];
+import java.util.*;
+
+public class Main {
+	static long cnt = 0;
 	
-	public static void main(String[] args)
+	public static List<Integer> mergesort(List<Integer> list)
 	{
-		Scanner sc = new Scanner(System.in);
+		if(list.size() <= 1) return list;
 		
-		int N, M;
-		N = sc.nextInt();
-		M = sc.nextInt();
-
-		long max = 0;
+		int size = list.size()/2;
 		
-		for (int i = 0; i < N; i++)
-		{
-			T[i] = sc.nextInt();
-			if (max < T[i]) max = T[i];
-		}
-
-		long lo = 1, hi = max * M, mid;
-
-		while (lo < hi)
-		{
-			mid = (lo + hi) >> 1;
-
-			long tmp = 0;
-
-			for (int i = 0; i < N; i++)
+		List<Integer> left = mergesort(new LinkedList<Integer>(list.subList(0, size)));
+		List<Integer> right = mergesort(new LinkedList<Integer>(list.subList(size, list.size())));
+		
+		return merge(left, right);		
+	}
+	static List<Integer> merge(List<Integer> left, List<Integer> right)
+	{
+		List<Integer> list = new LinkedList<Integer>();
+		
+		while(!left.isEmpty() && !right.isEmpty())
+			if(left.get(0) <= right.get(0))
+				list.add(left.remove(0));
+			else
 			{
-				tmp = tmp + (mid / T[i]);
+				cnt += left.size();
+				list.add(right.remove(0));
 			}
-			if (tmp < M) lo = mid + 1;
-			else hi = mid;
-		}
-		System.out.println(lo);
-		sc.close();
+		
+		if(!left.isEmpty()) list.addAll(left);
+		else list.addAll(right);
+		
+		return list;
+	}
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		List<Integer> list = new LinkedList<Integer>();
+		int N = sc.nextInt();
+		for(int i = 0; i < N; i++)
+			list.add(sc.nextInt());
+		
+		list = mergesort(list);
+		
+		System.out.println(cnt);
 	}
 }

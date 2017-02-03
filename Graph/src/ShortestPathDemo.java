@@ -13,7 +13,7 @@ public class ShortestPathDemo {
 		Node(int a, int b){ v= a; w = b;}
 	}
 	
-	// D[], P[] 배열 사용하기
+	// D[], P[] 배열 출력 하기
 	public static void printResult()
 	{
 		for(int i = 1; i <= V; i++)
@@ -97,7 +97,6 @@ public class ShortestPathDemo {
 	// 다익스트라 + 우선순위 큐
 	public static void dijkstra(int v)
 	{
-		System.out.println("다익스트라 알고리즘");
 		for(int i = 1; i <= V; i++)
 			D[i] = 0xffffff;
 		D[v] = 0; P[v] = v;
@@ -126,7 +125,11 @@ public class ShortestPathDemo {
 	public static void readInput(String fileName)
 	{
 		try{
-			Scanner sc = new Scanner(new FileInputStream(fileName));
+			Scanner sc;
+			if(fileName != null)
+				sc = new Scanner(new FileInputStream(fileName));
+			else
+				sc = new Scanner(System.in);
 			
 			V = sc.nextInt();
 			E = sc.nextInt();
@@ -149,7 +152,11 @@ public class ShortestPathDemo {
 	public static void readtoAdjList(String fileName)
 	{
 		try{
-			Scanner sc = new Scanner(new FileInputStream(fileName));
+			Scanner sc;
+			if(fileName != null)
+				sc = new Scanner(new FileInputStream(fileName));
+			else
+				sc = new Scanner(System.in);
 			
 			V = sc.nextInt();
 			E = sc.nextInt();
@@ -173,7 +180,10 @@ public class ShortestPathDemo {
 		}
 	}
 	public static void main(String[] args) {		
-		readInput("shortest_input.txt");
+		readInput(null);
+		
+		System.out.println("다익스트라 알고리즘");
+		System.out.println("----------------");
 		dijkstra(1); printResult();
 		System.out.println("----------------");
 		

@@ -1,8 +1,7 @@
-import java.io.FileInputStream;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class MSTDemo {
+public class MST_Prim {
 	static int[][] G = new int[100][100];	
 	static int[] D = new int[100];						
 	static int[] P = new int[100];
@@ -71,8 +70,8 @@ public class MSTDemo {
 	public static void main(String[] args) 
 	{
 		try{
-			Scanner sc = new Scanner(new FileInputStream("mst_input.txt"));			
-			//Scanner sc = new Scanner(System.in);
+			//Scanner sc = new Scanner(new FileInputStream("mst_input.txt"));			
+			Scanner sc = new Scanner(System.in);
 			V = sc.nextInt();
 			E = sc.nextInt();
 			

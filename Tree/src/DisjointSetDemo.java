@@ -5,17 +5,33 @@ public class DisjointSetDemo {
 	
 	public static void make_set(int N)
 	{
+		p = new int[N + 1];
+		r = new int[N + 1];
+		
 		for(int i = 1; i <= N; i++)
+		{
 			p[i] = i;
+			r[i] = 0;
+		}
 	}
 	public static int find_set(int x)
 	{
-		if( x == p[x]) return x;
-		else return find_set(p[x]);
+		if( x != p[x]) p[x] = find_set(p[x]);
+		
+		return p[x]; 
 	}
 	public static void union(int x, int y)
 	{
-		p[find_set(y)] = find_set(x);
+		int a = find_set(y); 
+		int b = find_set(x);
+		if(a == b) return;
+		
+		if(r[a] > r[b]) 
+			p[b] = a;
+		else {
+			p[a] = b;
+			if(r[a] == r[b]) r[b]++;
+		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

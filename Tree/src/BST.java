@@ -1,6 +1,3 @@
-
-
-
 public class BST {
 	private static class Node {
 		int key;
@@ -16,10 +13,11 @@ public class BST {
 		{
 			this.key = key; left = l; right = r; 
 		}
-	}
+	}	
 	private Node root;
 	
-	public BST() { root = null;}
+	BST() { root = null;}	
+	BST(Node r) { root = r;}
 	
 	public boolean isEmpty()
 	{

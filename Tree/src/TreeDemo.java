@@ -46,11 +46,10 @@ public class TreeDemo {
 	}
 	public static int tree_height(int v)
 	{
-		if(L[v] == 0 && R[v] == 0) return 0;
+		if(v == 0) return -1;
 		
-		int lh = 0, rh = 0;
-		if(L[v] != 0) lh = tree_height(L[v]);
-		if(R[v] != 0) rh = tree_height(R[v]);
+		int lh = tree_height(L[v]);
+		int rh = tree_height(R[v]);
 		
 		return lh > rh? lh + 1: rh + 1;
 	}
