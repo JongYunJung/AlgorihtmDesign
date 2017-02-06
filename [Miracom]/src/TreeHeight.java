@@ -8,9 +8,10 @@ public class TreeHeight {
 	
 	static int[] r = new int[10001];
 	static int[] l = new int[10001];
-		
+	static int[][] minmax = new int[10002][2];
+	
 	static int cnt = 0, maxH = 0; 
-	static Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+	
 	static void treeHeight(int v, int h)
 	{
 		if(v == -1) return;
@@ -18,13 +19,10 @@ public class TreeHeight {
 		
 		treeHeight(l[v], h + 1);
 		//----------------------------		
-		cnt = cnt + 1;
-		List<Integer> list = map.get(h);
-		if(list == null) {
-			list = new LinkedList<Integer>();
-			list.add(cnt);
-			map.put(h, list);			
-		}else list.add(cnt);
+		cnt++;
+		if(minmax[h][0] > cnt) minmax[h][0] = cnt;
+		if(minmax[h][1] < cnt) minmax[h][1] = cnt;
+		
 		//----------------------------
 		treeHeight(r[v], h + 1);				
 	}
@@ -35,43 +33,31 @@ public class TreeHeight {
 		
 		int node, left, right;
 		
+		for(int i = 1; i <= N; i++)
+		{
+			minmax[i][0] = 0xffffff;
+			minmax[i][1] = 0;
+		}
 		for(int i = 0; i < N; i++)
 		{
 			node = sc.nextInt();
 			left = sc.nextInt();
-			right = sc.nextInt();
-			
-			if(left != -1) 
-			{
-				l[node] = left;
-			}else l[node] = -1;
-			
-			if(right != -1) 
-			{
-				r[node] = right;
-			}else r[node] = -1;
+			right = sc.nextInt();	
+			l[node] = left;			
+			r[node] = right;
 		}
 		treeHeight(1, 1);
 		
-		int min, max, width = 0, height = 1;
-		
-		for(int key = 1; key <= maxH; key++)
+		int max = -1, height = 1;
+		for(int i = 1; i <= N; i++)
 		{
-			List<Integer> list = map.get(key);
-			
-			min = Collections.min(list);
-			max = Collections.max(list);
-			int diff = max - min + 1;
-			
-			System.out.println("³ôÀÌ:" + key + ", min = " + min + ", max" + max );
-			
-			if(diff > width)
+			int width = minmax[i][1] - minmax[i][0];
+			if(max < width) 
 			{
-				width = diff;
-				height = key;
-			}	
+				max = width; height = i;
+			}
 		}
-		System.out.println(height + " " + width);
+		System.out.printf("%d %d\n",height, max + 1);
 		
 		sc.close();
 	}
