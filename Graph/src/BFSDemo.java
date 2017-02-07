@@ -6,7 +6,7 @@ public class BFSDemo {
 	static int[][] G = new int[100][100];
 	static boolean[] visited = new boolean[100];
 	static int V, E;
-	public static void bfs(int v)
+	public static void BFS(int v)
 	{
 		Queue<Integer> Q = new LinkedList<Integer>();
 		visited[v] = true;
@@ -27,13 +27,10 @@ public class BFSDemo {
 			}
 		}
 	}
-	public static void readInput(String fileName) throws FileNotFoundException 
-	{
-		Scanner sc;
-		if(fileName != null)
-			sc = new Scanner(new FileInputStream(fileName));
-		else
-			sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
 			
 		V = sc.nextInt();
 		E = sc.nextInt();
@@ -46,19 +43,8 @@ public class BFSDemo {
 			
 			G[from][to] = 1;
 			G[to][from] = 1;
-		}			
-		sc.close();
-		
-	}
-	public static void main(String[] args) {
-		
-		try{
-			readInput(null);
-			bfs(1);
-		}catch(Exception e)
-		{
-			e.printStackTrace();
 		}
-
+		BFS(1);
+		sc.close();
 	}
 }

@@ -1,5 +1,5 @@
-import java.util.PriorityQueue;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class MST_Prim {
 	static int[][] G = new int[100][100];	
@@ -69,28 +69,21 @@ public class MST_Prim {
 	}
 	public static void main(String[] args) 
 	{
-		try{
-			//Scanner sc = new Scanner(new FileInputStream("mst_input.txt"));			
-			Scanner sc = new Scanner(System.in);
-			V = sc.nextInt();
-			E = sc.nextInt();
-			
-			int from, to, weight;
-			for(int i = 0; i < E; i++)
-			{
-				from = sc.nextInt();
-				to = sc.nextInt();
-				weight = sc.nextInt();				
-				G[from][to] = G[to][from] = weight;
-			}
-				
-			mst_prim(1);
-			printResult();
-			sc.close();
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		Scanner sc = new Scanner(System.in);
+		V = sc.nextInt();
+		E = sc.nextInt();
 		
+		int from, to, weight;
+		for(int i = 0; i < E; i++)
+		{
+			from = sc.nextInt();
+			to = sc.nextInt();
+			weight = sc.nextInt();				
+			G[from][to] = G[to][from] = weight;
+		}
+			
+		mst_prim(1);
+		printResult();
+		sc.close();		
 	}
 }

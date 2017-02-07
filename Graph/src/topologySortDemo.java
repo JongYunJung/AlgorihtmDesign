@@ -1,7 +1,5 @@
-import java.io.FileInputStream;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class topologySortDemo {
 	static int[][] G = new int[100][100];	
@@ -27,7 +25,7 @@ public class topologySortDemo {
 		}
 		order[++idx] = v;
 	}
-	public static void solve()
+	public static void solve_dfs()
 	{
 		for(int i = 1; i <= V; i++)
 		{
@@ -57,35 +55,23 @@ public class topologySortDemo {
 		}
 	}
 	
-	public static void readInput(String fileName)
-	{
-		try{
-			Scanner sc;
-			if(fileName != null)
-				sc = new Scanner(new FileInputStream(fileName));
-			else
-				sc = new Scanner(System.in);
-					
-			V = sc.nextInt();
-			E = sc.nextInt();
-			
-			int from, to;
-			for(int i = 0; i < E; i++)
-			{
-				from = sc.nextInt();
-				to = sc.nextInt();
-								
-				G[from][to] = 1;
-				indeg[to]++;
-			}			
-			sc.close();
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 	public static void main(String[] args) {		
-		readInput(null);
+		Scanner sc = new Scanner(System.in);
+				
+		V = sc.nextInt();
+		E = sc.nextInt();
+		
+		int from, to;
+		for(int i = 0; i < E; i++)
+		{
+			from = sc.nextInt();
+			to = sc.nextInt();
+							
+			G[from][to] = 1;
+			indeg[to]++;
+		}
 		solve_degree();
+		sc.close();
+		
 	}
 }
