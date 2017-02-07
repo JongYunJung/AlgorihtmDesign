@@ -1,6 +1,8 @@
+// 다음 순열 https://www.acmicpc.net/problem/10972
+
 import java.util.*;
 
-public class NextPermutation {
+public class NextPerm {
 	
 	
 	static boolean next_permutation(int[] arr)
@@ -33,14 +35,20 @@ public class NextPermutation {
 	}
 	public static void main(String[] args)
 	{
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
 		
-		int[] arr = new int[]{4, 3, 2, 1};
+		int[] arr = new int[N];
+		for(int i = 0; i < N; i++)
+			arr[i] = sc.nextInt();
 		
-		do
+		
+		if(next_permutation(arr))
 		{
 			for(int i = 0; i < arr.length; i++)
 				System.out.print(arr[i] + " ");
 			System.out.println();
-		}while(next_permutation(arr));
+		}else System.out.println(-1);
+		sc.close();
 	}
 }
