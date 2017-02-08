@@ -33,5 +33,6 @@ public class NQueen
 		search(0, 0);
 		
 		System.out.println(cnt);
+		sc.close();
 	}
 }
