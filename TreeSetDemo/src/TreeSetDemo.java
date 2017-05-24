@@ -6,7 +6,7 @@ public class TreeSetDemo {
 	public static void main(String[] args) {
 
 		System.out.println("TreeSet Demo........");
-		//TreeSet bst = new TreeSet();		
+
 		TreeSet<Integer> bst = new TreeSet<Integer>();
 		for(int key: keys)
 		{
@@ -21,5 +21,4 @@ public class TreeSetDemo {
 		bst.remove(19);
 		System.out.println(bst);
 	}
-
 }

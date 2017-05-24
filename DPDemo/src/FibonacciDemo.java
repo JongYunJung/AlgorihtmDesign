@@ -24,9 +24,9 @@ public class FibonacciDemo {
 		return fibo[n];
 	}
 	//--------------------------------------------
-	static int fibonacci_iter_notable(int n)
+	static long fibonacci_iter_notable(int n)
 	{
-		int curr = 0, ppred = 0, pred = 1;
+		long curr = 0, ppred = 0, pred = 1;
 		for(int i = 2; i <= n; i++)
 		{
 			curr = pred + ppred;

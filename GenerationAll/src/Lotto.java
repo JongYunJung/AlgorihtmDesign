@@ -12,8 +12,7 @@ public class Lotto {
 			if(k == 0) {
 				sc.close();
 				return;		
-			}			
-			System.out.println();
+			}
 			
 			for(int i = 0; i < k; i++)
 				S[i] = sc.nextInt();
@@ -25,7 +24,9 @@ public class Lotto {
 						for(int d = c + 1; d < k - 2; d++)
 							for(int e = d + 1; e < k - 1; e++)
 								for(int f = e + 1; f < k; f++)
-									System.out.printf("%d %d %d %d %d %d\n", S[a], S[b], S[c], S[d], S[e], S[f]);			
+									System.out.printf("%d %d %d %d %d %d\n", S[a], S[b], S[c], S[d], S[e], S[f]);
+			
+			System.out.println();
 		}	
 	}
 }
