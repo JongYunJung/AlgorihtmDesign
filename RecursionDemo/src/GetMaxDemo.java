@@ -4,13 +4,14 @@ public class GetMaxDemo {
 	static int cnt = 0;
 	static int[] arr = new int[]{25, 6, 73, 62, 90, 24, 15, 38, 50, 54};
 	
-	
+	// len: 배열의 크기
 	public static int getMax(int[] arr, int len)
 	{
 		if(len == 1) return arr[0];
 		int ret = getMax(arr, len - 1);
 		return ret > arr[len - 1]? ret: arr[len - 1];
 	}
+	// lo: 시작 인덱스, hi: 끝 인덱스
 	public static int getMax(int[] arr, int lo, int hi)
 	{
 		if(lo == hi) return arr[lo];

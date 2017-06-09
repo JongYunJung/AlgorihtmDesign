@@ -13,6 +13,7 @@ public class RecursionDemo {
 		}else{
 			for(int i = 0; i < k; i++) System.out.printf("\t");
 			System.out.printf("%2d> (%d %d)\n", ++cnt, k, n);
+			
 			printHello(k + 1, n);
 			printHello(k + 1, n);
 		}
@@ -28,10 +29,6 @@ public class RecursionDemo {
 
 	public static void main(String[] args)
 	{
-		
-//		for(int i = 0; i < 3; i++)
-//			System.out.println("Hello!!!");
-		
 		printHello(0, 3);
 		
 		System.out.println("¹ÝÈ¯°ª = " + recurFunc(0, 3));
