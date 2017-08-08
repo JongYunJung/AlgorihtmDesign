@@ -7,20 +7,21 @@ public class BOJ1987 {
 	static int dx[] = {0, 0, 1, -1};
 	static int dy[] = {1, -1, 0, 0};
 	static int r, c;
-	static int move(int x, int y)
-	{
-		if(visit[board[x].charAt(y)]) return 0;
-		
+	static int max = 0;
+	static void move(int x, int y, int cnt)
+	{	
 		visit[board[x].charAt(y)] = true;
-		int cnt = 1;
+		if(max < cnt) max = cnt;
 		for(int i = 0; i < 4; i++)
 		{
 			int tx = x + dx[i];
 			int ty = y + dy[i];
 			if(tx < 0 || tx == r || ty < 0 || ty == c) continue;
-			cnt += move(tx, ty);
+			if(visit[board[tx].charAt(ty)]) continue;
+			
+			move(tx, ty, cnt + 1);
 		}
-		return cnt;
+		visit[board[x].charAt(y)] = false;
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -30,8 +31,8 @@ public class BOJ1987 {
 		board = new String[r];
 		for(int i = 0; i < r; i++)
 			board[i] = sc.next();
-
-		System.out.println(move(0, 0));
-
+		move(0, 0, 1);
+		System.out.println(max);
+		sc.close();
 	}
 }

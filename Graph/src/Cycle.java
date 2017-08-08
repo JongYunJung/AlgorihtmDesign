@@ -60,5 +60,6 @@ public class Cycle {
 					G[i][j] = 0;
 			}
 		}
+		sc.close();
 	}
 }

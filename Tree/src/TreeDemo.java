@@ -7,8 +7,9 @@ public class TreeDemo {
 	static int[] P = new int[100];	// 부모	
 	static int V, E;	// 노드수, 간선수	
 	
-	/*public static void bfs(int v)
+	public static void bfsWithQ(int v)
 	{
+		System.out.println("트리의 너비우선탐색_Queue<>> ");
 		Queue<Integer> Q = new LinkedList<Integer>();
 		Q.add(v);
 		
@@ -19,10 +20,10 @@ public class TreeDemo {
 			if(L[v] != 0) Q.add(L[v]);
 			if(R[v] != 0) Q.add(R[v]);
 		}
-	}*/
+	}
 	public static void bfs(int v)
 	{
-		System.out.println("트리의 너비 우선 탐색");
+		System.out.println("트리의 너비우선탐색> ");
 		int[] Q = new int[100];
 		int front = -1, rear = -1;
 		
@@ -64,38 +65,21 @@ public class TreeDemo {
 	
 	}
 	
-	public static void readInput(String fileName)
-	{
-		try{
-			Scanner sc;
-			if(fileName == null) sc = new Scanner(System.in);
-			else{
-				FileInputStream fin = new FileInputStream(fileName);
-				sc = new Scanner(fin);
-			}
-			
-			
-			V = sc.nextInt();
-			E = sc.nextInt();
-			
-			int parent, child;
-			for(int i = 0; i < E; i++)
-			{
-				parent = sc.nextInt();
-				child = sc.nextInt();
-				if(L[parent] == 0) L[parent] = child;
-				else R[parent] = child;
-				P[child] = parent;			
-			}
-			sc.close();
-		}catch(Exception e)
+	public static void main(String[] args)	{		
+		Scanner sc = new Scanner(System.in);
+		V = sc.nextInt();
+		E = sc.nextInt();
+		
+		int parent, child;
+		for(int i = 0; i < E; i++)
 		{
-			e.printStackTrace();
+			parent = sc.nextInt();
+			child = sc.nextInt();
+			if(L[parent] == 0) L[parent] = child;
+			else R[parent] = child;
+			P[child] = parent;			
 		}
-	}
-	public static void main(String[] args)	{
-
-		readInput("tree_input.txt");
+		sc.close();
 		
 		inorder(1); System.out.print('\n');		
 		
@@ -103,5 +87,6 @@ public class TreeDemo {
 		System.out.printf("트리의 크기 = %d\n", TreeDemo.tree_size(1));
 		
 		bfs(1); System.out.print('\n');
+		bfsWithQ(1); System.out.print('\n');
 	}
 }

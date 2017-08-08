@@ -14,8 +14,9 @@ public class DFSDemo {
 				DFS(i);
 		}
 	}
-	public static void DFS_terative(int v)
+	public static void DFS_iterative(int v)
 	{
+		boolean[] visited = new boolean[100];
 		LinkedList<Integer> S = new LinkedList<Integer>();
 		
 		visited[v] = true;

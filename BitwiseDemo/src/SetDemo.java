@@ -1,3 +1,5 @@
+// 집합의 비트 표현 및 집합 연산
+
 public class SetDemo {
 
 	public static void printBits(String str, int set)
@@ -25,5 +27,4 @@ public class SetDemo {
 		System.out.print("A&B교집합> "); printBits(str, A&B);
 		System.out.print("A-B차집합> "); printBits(str, A & ~B);
 	}
-
 }

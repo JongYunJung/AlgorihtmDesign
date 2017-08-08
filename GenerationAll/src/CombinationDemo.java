@@ -4,7 +4,7 @@ public class CombinationDemo {
 	static char[] picked;	// 선택된 r개의 요소들 저장
 	static int cnt = 0;
 	
-	
+	// n개에서 r개를 선택하기, k: 선택된 요소수, 
 	public static void comb(int k, int n, int r, int start)
 	{
 		if(k == r)
@@ -38,7 +38,7 @@ public class CombinationDemo {
 		comb_recur(n - 1, r - 1);
 		comb_recur(n - 1, r);
 	}
-	// 중복 순열 생성
+	// 중복 조합 생성
 	public static void comb_re(int k, int n, int r, int start)
 	{
 		if(k == r)

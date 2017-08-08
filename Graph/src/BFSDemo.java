@@ -1,6 +1,3 @@
-import java.util.Scanner;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.*;
 public class BFSDemo {
 	static int[][] G = new int[100][100];

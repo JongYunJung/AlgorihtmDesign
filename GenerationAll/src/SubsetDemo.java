@@ -8,9 +8,7 @@ public class SubsetDemo {
 	{
 		if(k == n)
 		{
-			System.out.printf("%3d> ", ++cnt);
-			
-			//System.out.print(' ');
+			System.out.printf("%3d> ", ++cnt);			
 			for(int i = 0; i < k; i++)
 				if(bits[i]) 
 					System.out.printf("%c ", str[i]);
@@ -21,6 +19,7 @@ public class SubsetDemo {
 		bits[k] = false; subset(k + 1, n);
 		
 	}
+	// binary counting 으로 생성하기
 	public static void subset_counting(int N)
 	{
 		for(int i = 0; i < (1 << N); i++)
@@ -40,9 +39,10 @@ public class SubsetDemo {
 			System.out.println();
 		}
 	}
-	public static void subset_iter(int N)
+	// 반복 구조
+	public static void subset_iter()
 	{
-		int[] bits = new int[N];
+		int[] bits = new int[3];
 		for(int i = 0; i < 2; i++)
 		{
 			bits[0] = i;
@@ -58,12 +58,8 @@ public class SubsetDemo {
 		}
 	}
 	public static void main(String[] args) {
-		//String tmp = new String("ABCDE");
-		//str = tmp.toCharArray();
-		
 		subset(0, 4);
-		//subset_counting(tmp.length());
-		
+	
 	}
 
 }

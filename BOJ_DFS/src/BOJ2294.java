@@ -1,13 +1,29 @@
+// 동전2 - https://www.acmicpc.net/problem/2294
 import java.util.Scanner;
 
-// 동전2 - https://www.acmicpc.net/problem/2294
-
-public class CoinChange {
+public class BOJ2294 {
 	static int N, K;
 	static int[] coin;
 	static int[] memo;
 	public static int coinChange(int money)
 	{ 
+		if(memo[money] != 0) return memo[money];
+		if(money == 0) return 0;
+		int min = 0xffffff;
+		for(int i = 0; i < coin.length; i++)
+		{
+			if(money < coin[i]) continue;
+			int ret = coinChange(money - coin[i]);
+			
+			if(ret == -1) continue;			
+			if(min > ret) min = ret;
+		}
+		if(min < 0xffffff) return memo[money] = min + 1;
+		else return memo[money] = -1;
+	}
+	public static int coinChange_iter(int money)
+	{ 
+		memo[0] = 0;
 		for(int j = 1; j <= money; j++)
 		{
 			int min = 0xffffff;
@@ -21,6 +37,7 @@ public class CoinChange {
 			}
 			if(min != 0xffffff)
 				memo[j] = min + 1;
+			else memo[j] = -1;
 		}
 		return memo[money]; 
 	}
@@ -30,15 +47,15 @@ public class CoinChange {
 		
 		N = sc.nextInt();
 		K = sc.nextInt();
-		coin = new int[N + 1];
+		coin = new int[N];
 		memo = new int[K + 1];
 		
 		for(int i = 0; i < N; i++)
 			coin[i] = sc.nextInt();
-		for(int i = 1; i <= K; i++)
-			memo[i] = -1;
+		for(int i = 0; i <= K; i++)
+			memo[i] = 0;
 		System.out.println(coinChange(K));
-		
+		//System.out.println(coinChange_iter(K));
 		sc.close();
 	}
 }

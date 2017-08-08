@@ -21,6 +21,7 @@ public class KnapsackDemo {
 		
 		return case1 > case2? case1: case2;
 	}
+	// 재귀 + 메모
 	public static int knapsack_memo(int k, int W)
 	{
 		if(memo[k][W] != -1) return memo[k][W];
@@ -36,6 +37,7 @@ public class KnapsackDemo {
 		
 		return memo[k][W] = max;
 	}
+	// 반복
 	public static int knapsack_iter(int k, int W)
 	{
 		for(int i = 1; i <= k; i++)

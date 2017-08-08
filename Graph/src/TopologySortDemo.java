@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class topologySortDemo {
+public class TopologySortDemo {
 	static int[][] G = new int[100][100];	
 	static boolean[] visited = new boolean[100];
 	static int[] indeg = new int[100];

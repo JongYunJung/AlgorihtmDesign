@@ -1,41 +1,40 @@
 import java.util.*;
 
-class nQueenDemo { /* 8 Queens Chess Problem */
-  private static int[] row = new int[9];
-  private static int TC, a, b, lineCounter; 
+public class nQueenDemo {
+	static int[] COL;
+	static int N;
+	static int cnt = 0;
 
-  private static boolean place(int col, int tryrow) {
-    for (int prev = 1; prev < col; prev++) // check previously placed queens
-      if (row[prev] == tryrow || (Math.abs(row[prev] - tryrow) == Math.abs(prev - col)))
-        return false; // an infeasible solution if share same row or same diagonal
-    return true;
-  }
+	static boolean isOk(int k, int col) {
+		for (int i = 0; i < k; i++)
+			if (Math.abs(i - k) == Math.abs(COL[i] - col))
+				return false;
+		return true;
+	}
 
-  private static void backtrack(int col) {
-    for (int tryrow = 1; tryrow <= 8; tryrow++) // try all possible row
-      if (place(col, tryrow)) { // if can place a queen at this col and row...
-        row[col] = tryrow; // put this queen in this col and row
-        if (col == 8 && row[b] == a) { // a candidate solution & (a, b) has 1 queen
-          System.out.printf("%2d      %d", ++lineCounter, row[1]);
-          for (int j = 2; j <= 8; j++) System.out.printf(" %d", row[j]);
-          System.out.printf("\n");
-        }
-        else
-          backtrack(col + 1); // recursively try next column
-  }   }
-  
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    TC = sc.nextInt();
-    while (TC-- > 0) {
-      a = sc.nextInt();
-      b = sc.nextInt();
-      for (int i = 0; i < 9; i++) row[i] = 0;
-      lineCounter = 0;
-      System.out.printf("SOLN       COLUMN\n");
-      System.out.printf(" #      1 2 3 4 5 6 7 8\n\n");
-      backtrack(1); // generate all possible 8! candidate solutions
-      if (TC > 0) System.out.printf("\n");
-    }
-  }
+	static void search(int k, int used) {
+		if (k == N)
+			cnt++;
+
+		for (int i = 0; i < N; i++) {
+			if ((used & (1 << i)) != 0)
+				continue;
+			if (!isOk(k, i))
+				continue;
+			COL[k] = i;
+			search(k + 1, used | (1 << i));
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println("N-Queen ют╥б> ");
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		COL = new int[N];
+
+		search(0, 0);
+
+		System.out.println(cnt);
+		sc.close();
+	}
 }

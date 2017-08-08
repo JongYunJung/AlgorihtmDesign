@@ -1,12 +1,17 @@
 import java.util.*;
 
-public class ShortestPathBFSMatrix {
-	static int[][] G = new int[100][100];				// 인접 행렬
-	static int[] D = new int[100];						// 거리 저장
-	static int[] P = new int[100];						// 최단 경로 트리
+
+public class ShortestPathBFSArrayList {
+	static ArrayList<Vertex>[] G;
+	static int[] D;
+	static int[] P;
 	
 	static int V, E;
-		
+	private static class Vertex{
+		int v, w;
+		Vertex(int a, int b){ v= a; w = b;}
+	}
+	
 	// D[], P[] 배열 출력 하기
 	public static void printResult()
 	{
@@ -22,7 +27,7 @@ public class ShortestPathBFSMatrix {
 		System.out.printf("\n");
 	}
 	
-	// BFS + 인접 행렬
+	// BFS + 인접 리스트
 	public static void BFS(int v)
 	{
 		for(int i = 1; i <= V; i++)
@@ -35,40 +40,47 @@ public class ShortestPathBFSMatrix {
 		{
 			v = Q.remove();
 			
-			for(int i = 1; i <= V; i++)
+			for(Vertex e: G[v])
 			{
-				if(G[v][i] != 0 && D[i] > D[v] + G[v][i])
+				if(D[e.v] > D[v] + e.w)
 				{
-					D[i] = D[v] + G[v][i];
-					P[i] = v;
-					Q.add(i);
-					
+					D[e.v] = D[v] + e.w;
+					P[e.v] = v;
+					Q.add(e.v);					
 				}	
 			}
 		}
 	}
 	
 	public static void main(String[] args) {		
-
-		Scanner sc = new Scanner(System.in);		
+		Scanner sc = new Scanner(System.in);
 		
 		V = sc.nextInt();
 		E = sc.nextInt();
 		
-		int from, to, weight;
+		G = new ArrayList[V + 1];
+		for(int i = 0; i <= V; i++)
+			G[i] = new ArrayList<Vertex>();
+		
+		D = new int[V + 1];
+		P = new int[V + 1];
+		
+		int u, v, w;
 		for(int i = 0; i < E; i++)
 		{
-			from = sc.nextInt();
-			to = sc.nextInt();
-			weight = sc.nextInt();				
-			G[from][to] = G[to][from] = weight;
-		}		
-				
-		System.out.println("최단 경로 / BFS - 인접행렬");
+			u = sc.nextInt();
+			v = sc.nextInt();				
+			w = sc.nextInt();
+			
+			G[u].add(new Vertex(v, w));
+			G[v].add(new Vertex(u, w));
+		}			
+		sc.close();
+		
+		System.out.println("최단 경로 / BFS - 인접리스트");
 		System.out.println("----------------");
 		BFS(1); printResult();
 		System.out.println("----------------");
 		
-		sc.close();
 	}
 }

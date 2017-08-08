@@ -25,6 +25,7 @@ public class PermutationDemo {
 			}	
 		}
 	}
+	// 교환을 통한 생성, n개에서 r개를 뽑아서 나열하기
 	public static void perm_swap(int k, int n, int r)
 	{
 		if(k == r)
@@ -84,6 +85,8 @@ public class PermutationDemo {
 		String tmp = new String("ABCDE");
 		str = tmp.toCharArray();
 		order = new char[tmp.length()];
+		
+		
 		perm_swap(0, tmp.length(), 3);		
 	}
 

@@ -2,7 +2,18 @@
 public class RecursionDemo {
 	static int cnt = 0;
 	static int[] arr = new int[]{25, 6, 73, 62, 90, 24, 15, 38, 50, 54};
-	
+	public static void printHello(int k)
+	{
+		if(k == 3) {
+			System.out.printf("-----\n");
+			return;
+		}
+		System.out.printf("%2d> Hello!\n", k);
+		printHello(k + 1);
+		System.out.printf("%2d> Hello!\n", k);
+		
+	}
+
 	public static void printHello(int k, int n)
 	{
 		if(k == n)
@@ -29,7 +40,8 @@ public class RecursionDemo {
 
 	public static void main(String[] args)
 	{
-		printHello(0, 3);
+		printHello(0);
+		//printHello(0, 3);
 		
 		System.out.println("¹ÝÈ¯°ª = " + recurFunc(0, 3));
 		

@@ -1,6 +1,7 @@
+
 import java.util.*;
 
-public class ShortestPathBFSMatrix {
+public class ShortestPathBrute {
 	static int[][] G = new int[100][100];				// 인접 행렬
 	static int[] D = new int[100];						// 거리 저장
 	static int[] P = new int[100];						// 최단 경로 트리
@@ -23,29 +24,28 @@ public class ShortestPathBFSMatrix {
 	}
 	
 	// BFS + 인접 행렬
-	public static void BFS(int v)
+	public static void BruteForce(int s)
 	{
 		for(int i = 1; i <= V; i++)
 			D[i] = 0xffffff;
-		D[v] = 0; P[v] = v;
+		D[s] = 0; P[s] = s;
 		
-		Queue<Integer> Q = new LinkedList<Integer>();		
-		Q.add(v);		
-		while(!Q.isEmpty())
+		boolean flag;
+		do
 		{
-			v = Q.remove();
+			flag = false;
 			
+			for(int v = 1; v <= V; v++)				
 			for(int i = 1; i <= V; i++)
 			{
 				if(G[v][i] != 0 && D[i] > D[v] + G[v][i])
 				{
 					D[i] = D[v] + G[v][i];
 					P[i] = v;
-					Q.add(i);
-					
+					flag = true;
 				}	
 			}
-		}
+		}while(flag);
 	}
 	
 	public static void main(String[] args) {		
@@ -64,9 +64,9 @@ public class ShortestPathBFSMatrix {
 			G[from][to] = G[to][from] = weight;
 		}		
 				
-		System.out.println("최단 경로 / BFS - 인접행렬");
+		System.out.println("최단 경로 / BruteForce");
 		System.out.println("----------------");
-		BFS(1); printResult();
+		BruteForce(1); printResult();
 		System.out.println("----------------");
 		
 		sc.close();

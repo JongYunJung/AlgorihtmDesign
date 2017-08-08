@@ -1,6 +1,6 @@
 
 public class CoinChangeDemo {
-	static int[] coin = new int[]{1, 2, 5};
+	static int[] coin = new int[]{1, 4, 6};
 	static int[] coin_set = new int[100];
 	static int min = 0xfffff;
 	
@@ -28,7 +28,7 @@ public class CoinChangeDemo {
 	}
 	public static void main(String[] args) {
 		
-		coinChange(0, 10);
+		coinChange(0, 8);
 	}
 
 }

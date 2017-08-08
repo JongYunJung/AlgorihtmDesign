@@ -1,7 +1,25 @@
 import java.util.*;
 
 public class SortingDemo {	
-	
+	static class Node implements Comparable<Node> {
+		String name;
+		int id;
+		Node(String _name, int _id)	
+		{
+			name = _name; id = _id;
+		}
+		public String toString()
+		{
+			return "(" + name + ", " + id + ")";
+		}
+		
+		public int compareTo(Node arg) {
+			return name.compareTo(arg.name);
+			//return id - arg.id;		
+		}
+	}
+
+	// string 문자열들 정렬하기
 	public static void sortArray()
 	{
 		String[] names = new String[]{"신동엽", "이수근", "유재석", "강호동", "김구라"};
@@ -37,7 +55,7 @@ public class SortingDemo {
 			System.out.println(name);
 	}
 	
-/*	public static void usingComparator()
+	public static void usingComparator()
 	{
 		Comparator<Node> compareNode = new Comparator<Node>(){
 			
@@ -59,7 +77,7 @@ public class SortingDemo {
 		for(Node node: nodes)
 			System.out.println(node);;
 		
-	}*/
+	}
 	public static void usingComparable()
 	{
 		
@@ -70,31 +88,25 @@ public class SortingDemo {
 		nodes[3] = new Node("강호동", 4);
 		nodes[4] = new Node("김구라", 2);
 		
-		Arrays.sort(nodes);
-		
+		// 오름차순 정렬
+		Arrays.sort(nodes);		
 		for(Node node: nodes)
 			System.out.println(node);;
 		
+		System.out.println("----------------------------");
+			 
+		// 내림차순 정렬
 		Arrays.sort(nodes, Collections.reverseOrder());
 		for(Node node: nodes)
 			System.out.println(node);;
 	}
-	public static void bsdemo()
-	{
-		int[] arr = new int[]{3, 17, 29, 25, 16, 77, 12, 8, 62, 2, 7, 33, 45, 19};
-		Arrays.sort(arr);	
-		for(int val: arr)
-			System.out.print(val + " ");
-		System.out.println();
-		System.out.println("25 => " + Arrays.binarySearch(arr, 25)); // 인덱스
-		System.out.println("55 => " + Arrays.binarySearch(arr, 55)); // 음수
-	}
+
 	public static void main(String[] args)
 	{
 		//sortArray();
 		//sortArrayList();
 		//usingComparator();
-		//usingComparable();
-		bsdemo();
+		usingComparable();
+
 	}
 }

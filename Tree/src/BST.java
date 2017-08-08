@@ -1,6 +1,7 @@
 
 public class BST <T extends Comparable<? super T>>
 {
+	// 노드 클래스
 	private static class Node<T> 
 	{
 		T	key;
@@ -16,12 +17,20 @@ public class BST <T extends Comparable<? super T>>
 	
 	public void makeEmpty(){ root = null;}
 	public boolean isEmpty(){ return root == null;}
+	
+	// x 값 검색
 	public boolean contains(T x) { return contains(x, root); }
+	
+	// 최소값 찾기
 	public T findMin() throws Exception{
 		if(isEmpty()) throw new Exception();
 		return findMin(root).key;
 	}
+	
+	// x 값 삽입
 	public void insert(T x){ root = insert(x, root); }
+	
+	//x값 삭제
 	public void remove(T x){ root = remove(x, root); }
 	
 	private boolean contains(T x, Node<T> t)

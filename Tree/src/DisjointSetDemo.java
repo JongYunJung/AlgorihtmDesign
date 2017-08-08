@@ -1,3 +1,4 @@
+// 상호 배타 집합(disjoint-set)
 
 public class DisjointSetDemo {
 	static int[] p = null;
@@ -41,7 +42,8 @@ public class DisjointSetDemo {
 		
 		union(1, 3); union(2, 10); union(7, 5); union(3, 7); union(2, 8);
 		
-		System.out.printf("\nunion 연산>\n");
+		System.out.printf("\nunion 연산>\n\n");
+		
 		print_set(10);
 		
 		System.out.println("3의 집합 -->" + find_set(3));
@@ -50,9 +52,10 @@ public class DisjointSetDemo {
 	}
 	public static void print_set(int N)
 	{
+		System.out.printf("p[] 배열>\n정점 ");
 		for(int i = 1; i <= N; i++)
 			System.out.printf("%2d ", i);
-		System.out.printf("\n---------------------------------------\n");
+		System.out.printf("\n---------------------------------------\n부모 ");
 		for(int i = 1; i <= N; i++)
 			System.out.printf("%2d ", p[i]);
 		System.out.println();

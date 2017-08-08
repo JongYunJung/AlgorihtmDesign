@@ -18,7 +18,7 @@ public class KnapsackDemo {
 		}
 		System.out.println();
 	}
-	
+	// 반환 값 없음.
 	public static void knapsack(int k, int weight, int value)
 	{
 		if( weight > W) return;
@@ -27,8 +27,7 @@ public class KnapsackDemo {
 		{
 			if(value > max) 
 			{
-				max = value;
-				print_items();
+				max = value; //print_items();
 			}
 			return;
 		}

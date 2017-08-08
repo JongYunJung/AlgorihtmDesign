@@ -2,26 +2,29 @@
 
 import java.util.*;
 
-public class SevenDwarf {
+public class BOJ2309 {
 
 	static ArrayList<Integer> arr = new ArrayList<Integer>();
-	static int N = 9;	
 	
-	static boolean subset(int k, int sum, int set, int cnt)
+	static int[] bits = new int[9];
+	
+	static boolean subset(int k, int sum, int cnt)
 	{
 		if(sum > 100) return false;
 		if(cnt == 7 && sum == 100)
 		{
-			for(int i = 0; i < N; i++)
-				if((set & (1 << i)) != 0)
+			for(int i = 0; i < 9; i++)
+				if(bits[i] == 1)
 					System.out.println(arr.get(i));
 			return true;
 		}
-		if(k == N) return false;
+		if(k == 9) return false;
 		
-		if(subset(k + 1, sum + arr.get(k), set | (1 << k), cnt + 1))
+		bits[k] = 1;
+		if(subset(k + 1, sum + arr.get(k), cnt + 1))
 			return true;
-		if(subset(k + 1, sum, set, cnt))
+		bits[k] = 0;
+		if(subset(k + 1, sum, cnt))
 			return true;
 		
 		return false;
@@ -30,12 +33,12 @@ public class SevenDwarf {
 	{
 		Scanner sc = new Scanner(System.in);
 		
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < 9; i++)
 			arr.add(sc.nextInt());
 		
 		Collections.sort(arr);
 		
-		subset(0, 0, 0, 0);
+		subset(0, 0, 0);
 		
 		sc.close();
 	}	
