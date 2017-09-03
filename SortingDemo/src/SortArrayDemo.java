@@ -1,7 +1,6 @@
 import java.util.*;
 
-public class ArrayDemo {
-	
+public class SortArrayDemo {
 	public static void main(String[] args)
 	{
 		int[] arr = new int[]{10, 7, 5, 9, 3, 2, 15, 6, 1, 12};
@@ -9,7 +8,7 @@ public class ArrayDemo {
 		
 		for(int val: arr)
 			System.out.println(val);
-		
+	
 		System.out.println("----------------------------");
 		
 		List<String> names = new ArrayList<String>();		 
