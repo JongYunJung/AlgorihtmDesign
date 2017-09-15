@@ -50,9 +50,9 @@ public class SegmentTree {
 		st[id] += v;
 		if(l != r)
 		{
-				int m = (l + r) / 2;		
-				update(id * 2, l, m, p, v);
-				update(id * 2 + 1, m + 1, r, p, v);
+			int m = (l + r) / 2;		
+			update(id * 2, l, m, p, v);
+			update(id * 2 + 1, m + 1, r, p, v);
 		}
 	}
 	public static void updateRange(int id, int l, int r, int i, int j, int v)
